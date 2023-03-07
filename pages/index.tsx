@@ -10,6 +10,9 @@ const Home: NextPage = () => {
   const [balance, setBalance] = useState(0);
   const [address, setAddress] = useState('');
   const [executable, setExecutable] = useState(false);
+  
+  const secretKey = JSON.parse(process.env.PRIVATE_KEY ?? '') as number[];
+  const myKeypair = web3.Keypair.fromSecretKey(Uint8Array.from(secretKey));
 
   const addressSubmittedHandler = (address: string) => {
     try {
